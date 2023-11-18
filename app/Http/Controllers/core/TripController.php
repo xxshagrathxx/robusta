@@ -50,7 +50,7 @@ class TripController extends Controller
     
     public function create() {
         $stations = Station::all();
-        $buses = Bus::all();
+        $buses = Bus::where('trip_id', null)->get();
         return view('pages.trips.create', compact('stations', 'buses'));
     }
     
@@ -63,11 +63,15 @@ class TripController extends Controller
             'bus_id' => 'required',
         ]);
     
-        Trip::create([
+        $trip = Trip::create([
             'from_city_id' => $request->from_city_id,
             'to_city_id' => $request->to_city_id,
             'via_city_ids' => $request->via_city_ids,
             'bus_id' => $request->bus_id,
+        ]);
+
+        Bus::findOrFail($request->bus_id)->update([
+            'trip_id' => $trip->id,
         ]);
 
         $notification = array(
@@ -81,7 +85,7 @@ class TripController extends Controller
     public function edit($id)
     {
         $stations = Station::all();
-        $buses = Bus::all();
+        $buses = Bus::where('trip_id', null)->get();
         $trip = Trip::findOrFail($id);
         return view('pages.trips.edit', compact('trip', 'stations', 'buses'));
     }
@@ -91,17 +95,21 @@ class TripController extends Controller
         $request->validate([
             'from_city_id' => 'required',
             'to_city_id' => 'required',
-            'via_city_ids' => 'nullable|array',
+            // 'via_city_ids' => 'nullable|array',
             'bus_id' => 'required',
         ]);
 
-        $station = Trip::findOrFail($id);
+        $trip = Trip::findOrFail($id);
 
-        $station->update([
+        $trip->update([
             'from_city_id' => $request->from_city_id,
             'to_city_id' => $request->to_city_id,
             'via_city_ids' => $request->via_city_ids,
             'bus_id' => $request->bus_id,
+        ]);
+
+        Bus::findOrFail($request->bus_id)->update([
+            'trip_id' => $trip->id,
         ]);
 
         $notification = array(

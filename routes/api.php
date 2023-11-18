@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\BookingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/booking/book-seat/{seat_id}', [BookingController::class, 'bookSeat']);
+Route::get('/booking/list-seats/{trip_id}', [BookingController::class, 'listAvailableSeats']);

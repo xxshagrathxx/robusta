@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('bus_id');
             $table->integer('seat_number');
-            $table->integer('is_booked');
-            $table->integer('user_id');
+            $table->boolean('is_booked')->default(false);
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

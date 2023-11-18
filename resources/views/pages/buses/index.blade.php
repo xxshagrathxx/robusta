@@ -32,6 +32,7 @@
                                         <tr>
                                             <th style="width: 1%;">#</th>
                                             <th>{{ transWord('Name') }}</th>
+                                            <th>{{ transWord('Trip Status') }}</th>
                                             <th>{{ transWord('Total Seats') }}</th>
                                             <th class="text-end">{{ transWord('Actions') }}</th>
                                         </tr>
@@ -64,6 +65,7 @@
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false},
                     {data: 'name', name: 'name'},
+                    {data: 'trip_status', name: 'trip_status'},
                     {data: 'total_seats', name: 'total_seats'},
                     {
                         data: 'action',

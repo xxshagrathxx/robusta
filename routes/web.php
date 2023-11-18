@@ -203,6 +203,8 @@ Route::group(
                         Route::get('/edit/{id}', [BusController::class, 'edit'])->middleware('permission:update_buses')->name('buses-edit');
                         Route::post('/update/{id}', [BusController::class, 'update'])->middleware('permission:update_buses')->name('buses-update');
                         Route::get('/delete/{id}', [BusController::class, 'destroy'])->middleware('permission:delete_buses')->name('buses-delete');
+
+                        Route::get('/reset/{id}', [BusController::class, 'resetBusForANewTrip'])->middleware('permission:update_buses')->name('reset-bus');
                     });
                 // ./Buses
 
