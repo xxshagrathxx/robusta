@@ -23,25 +23,25 @@ class SettingsSeeder extends Seeder
             'value' => '2023 كل الحقوق محفوظة',
         ],[
             'key' => 'copyrights_en_lnk',
-            'value' => 'Egynozom',
+            'value' => 'Robusta',
         ],[
             'key' => 'copyrights_ar_lnk',
-            'value' => 'ايجي نظم',
+            'value' => 'روبوستا',
         ],[
             'key' => 'copyrights_lnk',
-            'value' => 'https://www.egynozom.com/',
+            'value' => 'https://robustagroup.com/studio',
         ],[
             'key' => 'logo',
-            'value' => 'logo.png',
+            'value' => '1782883849603776.jpg',
         ],[
             'key' => 'favicon',
-            'value' => 'favicon.png',
+            'value' => '1782883849614877.jpg',
         ],[
             'key' => 'contact_us_to_email',
             'value' => 'contact@dev.net',
         ],[
             'key' => 'contact_us_subject',
-            'value' => 'Mail from Egynozom Contact Us',
+            'value' => 'Mail from Robusta Contact Us',
         ]];
 
         foreach($settings as $setting){
