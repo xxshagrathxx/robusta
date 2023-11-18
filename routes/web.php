@@ -7,6 +7,7 @@ use App\Http\Controllers\core\RoleController;
 use App\Http\Controllers\core\SettingsController;
 use App\Http\Controllers\core\TranslateController;
 use App\Http\Controllers\core\UserController;
+use App\Http\Controllers\core\StationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -153,11 +154,22 @@ Route::group(
                 // ./Profile
 
                 // Settings
-                Route::prefix('/settings')->middleware('permission:update_settings')->group(function() {
+                    Route::prefix('/settings')->middleware('permission:update_settings')->group(function() {
                         Route::get('/edit', [SettingsController::class, 'edit'])->name('settings-edit');
                         Route::post('/update', [SettingsController::class, 'update'])->name('settings-update');
                     });
                 // ./Settings
+
+                // Stations
+                    Route::prefix('/stations')->middleware('permission:show_stations')->group(function() {
+                        Route::get('/all', [StationController::class, 'index'])->middleware('permission:show_stations')->name('stations-all');
+                        Route::get('/create', [StationController::class, 'create'])->middleware('permission:create_stations')->name('stations-create');
+                        Route::post('/store', [StationController::class, 'store'])->middleware('permission:create_stations')->name('stations-store');
+                        Route::get('/edit/{id}', [StationController::class, 'edit'])->middleware('permission:update_stations')->name('stations-edit');
+                        Route::post('/update/{id}', [StationController::class, 'update'])->middleware('permission:update_stations')->name('stations-update');
+                        Route::get('/delete/{id}', [StationController::class, 'destroy'])->middleware('permission:delete_stations')->name('stations-delete');
+                    });
+                // ./Stations
 
             // ./Pages
         });

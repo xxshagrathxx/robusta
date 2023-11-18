@@ -73,6 +73,15 @@
       </li>
     @endif
 
+    @can('show_stations')
+      <li class="menu-item @yield('stations')">
+        <a href="{{ route('stations-all') }}" class="menu-link">
+          <i class="fa fa-language" aria-hidden="true"></i>&nbsp;&nbsp;
+          <div>{{ transWord('Stations') }}</div>
+        </a>
+      </li>
+    @endcan
+
     @can('update_settings')
       <li class="menu-item @yield('settings')">
         <a href="{{ route('settings-edit') }}" class="menu-link">
