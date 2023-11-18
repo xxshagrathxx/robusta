@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\core\AuthController;
+use App\Http\Controllers\core\BusController;
 use App\Http\Controllers\core\PermissionController;
 use App\Http\Controllers\core\ProfileController;
 use App\Http\Controllers\core\RoleController;
@@ -182,6 +183,28 @@ Route::group(
                         Route::get('/delete/{id}', [TripController::class, 'destroy'])->middleware('permission:delete_trips')->name('trips-delete');
                     });
                 // ./Trips
+
+                // Trips
+                    Route::prefix('/trips')->middleware('permission:show_trips')->group(function() {
+                        Route::get('/all', [TripController::class, 'index'])->middleware('permission:show_trips')->name('trips-all');
+                        Route::get('/create', [TripController::class, 'create'])->middleware('permission:create_trips')->name('trips-create');
+                        Route::post('/store', [TripController::class, 'store'])->middleware('permission:create_trips')->name('trips-store');
+                        Route::get('/edit/{id}', [TripController::class, 'edit'])->middleware('permission:update_trips')->name('trips-edit');
+                        Route::post('/update/{id}', [TripController::class, 'update'])->middleware('permission:update_trips')->name('trips-update');
+                        Route::get('/delete/{id}', [TripController::class, 'destroy'])->middleware('permission:delete_trips')->name('trips-delete');
+                    });
+                // ./Trips
+
+                // Buses
+                    Route::prefix('/buses')->middleware('permission:show_buses')->group(function() {
+                        Route::get('/all', [BusController::class, 'index'])->middleware('permission:show_buses')->name('buses-all');
+                        Route::get('/create', [BusController::class, 'create'])->middleware('permission:create_buses')->name('buses-create');
+                        Route::post('/store', [BusController::class, 'store'])->middleware('permission:create_buses')->name('buses-store');
+                        Route::get('/edit/{id}', [BusController::class, 'edit'])->middleware('permission:update_buses')->name('buses-edit');
+                        Route::post('/update/{id}', [BusController::class, 'update'])->middleware('permission:update_buses')->name('buses-update');
+                        Route::get('/delete/{id}', [BusController::class, 'destroy'])->middleware('permission:delete_buses')->name('buses-delete');
+                    });
+                // ./Buses
 
             // ./Pages
         });

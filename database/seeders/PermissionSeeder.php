@@ -45,6 +45,12 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'update_trips']);
         Permission::create(['name'=>'delete_trips']);
 
+        // Buses
+        Permission::create(['name'=>'show_buses']);
+        Permission::create(['name'=>'create_buses']);
+        Permission::create(['name'=>'update_buses']);
+        Permission::create(['name'=>'delete_buses']);
+
         // Permissions
         Permission::create(['name'=>'assign_permissions']);
         Permission::create(['name'=>'update_permissions']);

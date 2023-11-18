@@ -14,7 +14,7 @@
                     <div class="col-sm-12">
                         <div class="card-body">
                             <h5 class="card-title text-primary">{{ transWord('Edit Trip') }}</h5>
-                            <form action="{{ route('trips-store') }}" method="post">
+                            <form action="{{ route('trips-update', $trip->id) }}" method="post">
                                 @csrf
 
                                 <div class="col-6 mb-3">
