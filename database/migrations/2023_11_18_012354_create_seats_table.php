@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
+            $table->integer('bus_id');
+            $table->integer('seat_number');
+            $table->integer('is_booked');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

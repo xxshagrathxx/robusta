@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Station extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function trips() 
+    {
+        return $this->hasMany(Trip::class);
+    }
 }
