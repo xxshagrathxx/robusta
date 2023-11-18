@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('from_city_id');
             $table->integer('to_city_id');
-            $table->json('via_city_ids');
+            $table->json('via_city_ids')->nullable();
             $table->integer('bus_id');
             $table->timestamps();
         });

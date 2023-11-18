@@ -82,6 +82,15 @@
       </li>
     @endcan
 
+    @can('show_trips')
+      <li class="menu-item @yield('trips')">
+        <a href="{{ route('trips-all') }}" class="menu-link">
+          <i class="fa fa-language" aria-hidden="true"></i>&nbsp;&nbsp;
+          <div>{{ transWord('Trips') }}</div>
+        </a>
+      </li>
+    @endcan
+
     @can('update_settings')
       <li class="menu-item @yield('settings')">
         <a href="{{ route('settings-edit') }}" class="menu-link">

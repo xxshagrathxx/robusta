@@ -13,7 +13,7 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-12">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">{{ transWord('Create Station') }}</h5>
+                            <h5 class="card-title text-primary">{{ transWord('Edit Station') }}</h5>
                             <form action="{{ route('stations-update', $station->id) }}" method="post">
                                 @csrf
 

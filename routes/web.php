@@ -8,6 +8,7 @@ use App\Http\Controllers\core\SettingsController;
 use App\Http\Controllers\core\TranslateController;
 use App\Http\Controllers\core\UserController;
 use App\Http\Controllers\core\StationController;
+use App\Http\Controllers\core\TripController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -170,6 +171,17 @@ Route::group(
                         Route::get('/delete/{id}', [StationController::class, 'destroy'])->middleware('permission:delete_stations')->name('stations-delete');
                     });
                 // ./Stations
+
+                // Trips
+                    Route::prefix('/trips')->middleware('permission:show_trips')->group(function() {
+                        Route::get('/all', [TripController::class, 'index'])->middleware('permission:show_trips')->name('trips-all');
+                        Route::get('/create', [TripController::class, 'create'])->middleware('permission:create_trips')->name('trips-create');
+                        Route::post('/store', [TripController::class, 'store'])->middleware('permission:create_trips')->name('trips-store');
+                        Route::get('/edit/{id}', [TripController::class, 'edit'])->middleware('permission:update_trips')->name('trips-edit');
+                        Route::post('/update/{id}', [TripController::class, 'update'])->middleware('permission:update_trips')->name('trips-update');
+                        Route::get('/delete/{id}', [TripController::class, 'destroy'])->middleware('permission:delete_trips')->name('trips-delete');
+                    });
+                // ./Trips
 
             // ./Pages
         });
